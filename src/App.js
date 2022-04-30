@@ -1,6 +1,9 @@
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Pages from "./pages/Pages"
+import Category from "./components/Category"
+import {BrowserRouter} from 'react-router-dom'
+
 
 
 
@@ -8,9 +11,12 @@ import Pages from "./pages/Pages"
 function App() {
   return (
     <div className="App">
+      <BrowserRouter>
       <Navbar/>
       <Hero/>
+      <Category/>
       <Pages/>
+      </BrowserRouter>
       
     
     </div>
