@@ -12,9 +12,16 @@ const Vegetarian = () => {
     },[]); //gets invoked everytime the page loads
 
     const getVegetarian = async()=>{
+      const check = localStorage.getItem('Vegetarian');
+    
+      if(check){
+        setVegetarian(JSON.parse(check))
+      }else{
         const api= await fetch(`https://api.spoonacular.com/recipes/random?apiKey=4abe2b3e1ba94fd2864018d91ed3a0bb&number=9&tags=vegetarian`)
         const data= await api.json();
+        localStorage.setItem('Vegetarian', JSON.stringify(data.recipes))
         setVegetarian(data.recipes)
+      }
     }
   return (
         <div>

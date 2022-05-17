@@ -12,9 +12,16 @@ const Popular = () => {
     },[]); //gets invoked everytime the page loads
 
     const getPopular = async()=>{
+      const check = localStorage.getItem('Trending');
+      if(check){
+        setPopular(JSON.parse(check))
+      }else{
         const api= await fetch(`https://api.spoonacular.com/recipes/random?apiKey=4abe2b3e1ba94fd2864018d91ed3a0bb&number=9`)
         const data= await api.json();
+        localStorage.setItem('Trending', JSON.stringify(data.recipes))
         setPopular(data.recipes)
+      }
+
     }
     
   return (
